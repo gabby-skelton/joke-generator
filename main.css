@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #e8ca93;
+  text-align: center;
+}
+
+button {
+  padding: 3%;
+  width: 100%;
+}
+
+hr {
+  margin-top: 5%;
+  border: 1px solid #ca6c6c;
+}
+
+h1 {
+  color: #ca6c6c;
+  width: 100%;
+}
+
+p {
+  padding-top: 15%;
+  padding-bottom: 15%;
+}
+
+.joke-container {
+  background-color: white;
+  height: 70vh;
+  width: 50vw;
+  margin-left: 25vw;
+  margin-top: 15vh;
+  border-radius: 50px;
+  padding: 8%;
+}
+
+.content-container {
+
+}
+
+#generate-joke-btn {
+  border: none;
+}
+
+#add-joke-btn {
+  background: none;
+  color: grey;
+  text-decoration: underline;
+  border: none;
+  margin-top: 3%;
+}
