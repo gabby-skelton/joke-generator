@@ -21,10 +21,6 @@ const myRef = ref(database, 'jokes/');
 
 onValue(myRef, (snapshot) => {
   const data = snapshot.val();
-  const size = snapshot.size();
-  console.log("Size: " + size);
-  var random = Math.floor((Math.random() * size));
-  console.log("Random: " + random);
   console.log(data);
 });
 
