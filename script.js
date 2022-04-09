@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
-import { getDatabase, ref, child, get, set, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import { collection, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCjTjR9PWc1Zf0nj4TrP-1MJT932cT_9Eo",
@@ -16,15 +16,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-const database = getDatabase();
-const myRef = ref(database, 'jokes/QonsxVvAxDzCrgl2pTJw/joke');
+const db = getDatabase();
+const myRef = collection(db, "jokes", "QonsxVvAxDzCrgl2pTJw");
+const docSnap = await getDoc(myRef);
 
-onValue(myRef, (snapshot) => {
-  const data = snapshot.val();
-  console.log("joke: " + data);
-});
-
-
+if (docSnap.exists()) {
+  console.log("Document data:", docSnap.data());
+} else {
+  // doc.data() will be undefined in this case
+  console.log("No such document!");
+}
 
 /* click-listeners for containers */
 const addJokeBtn = document.getElementById("add-joke-btn");
