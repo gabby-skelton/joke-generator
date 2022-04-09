@@ -15,7 +15,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const db = firestore();
 
 const myRef = collection(db, "jokes", "QonsxVvAxDzCrgl2pTJw");
 const docSnap = await getDoc(myRef);
