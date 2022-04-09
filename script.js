@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
-import { getDatabase, ref, child, get, set, on } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import { getDatabase, ref, child, get, set, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCjTjR9PWc1Zf0nj4TrP-1MJT932cT_9Eo",
@@ -19,7 +19,7 @@ const analytics = getAnalytics(app);
 
 const database = getDatabase();
 
-ref.on("value", function(snapshot) {
+ref.onValue(function(snapshot) {
    console.log(snapshot.val());
 }, function (error) {
    console.log("Error: " + error.code);
