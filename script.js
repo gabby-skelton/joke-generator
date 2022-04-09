@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 const database = getDatabase();
-const myRef = ref(database, 'jokes/' + postId + '/joke');
+const myRef = ref(database, 'jokes/joke');
 
 onValue(myRef, (snapshot) => {
   const data = snapshot.val();
