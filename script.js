@@ -19,7 +19,7 @@ const analytics = getAnalytics(app);
 
 const database = getDatabase();
 const dbRef = ref(database);
-get(child(dbRef, `users/${userId}`)).then((snapshot) => {
+get(child(dbRef)).then((snapshot) => {
   if (snapshot.exists()) {
     console.log(snapshot.val());
   } else {
