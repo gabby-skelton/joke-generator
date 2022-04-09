@@ -21,7 +21,7 @@ const myRef = ref(database, 'jokes/QonsxVvAxDzCrgl2pTJw/joke');
 
 onValue(myRef, (snapshot) => {
   const data = snapshot.val();
-  console.log(data);
+  console.log("joke: " + data);
 });
 
 
