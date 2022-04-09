@@ -11,18 +11,17 @@ const firebaseConfig = {
   messagingSenderId: "175403930516",
   appId: "1:175403930516:web:59f674989c1901b5997581",
   measurementId: "G-6BG3SNRVQG",
-  databaseURL: "https://joke-db-c60d8-default-rtdb.firebaseio.com/"
 };
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 const database = getDatabase();
+const myRef = ref(database, 'jokes/' + postId + '/joke');
 
-onValue(ref, function(snapshot) {
-   console.log(snapshot.val());
-}, function (error) {
-   console.log("Error: " + error.code);
+onValue(myRef, (snapshot) => {
+  const data = snapshot.val();
+  console.log(data);
 });
 
 
