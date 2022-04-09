@@ -19,7 +19,7 @@ const analytics = getAnalytics(app);
 
 const database = getDatabase();
 
-ref.onValue(function(snapshot) {
+onValue(ref, function(snapshot) {
    console.log(snapshot.val());
 }, function (error) {
    console.log("Error: " + error.code);
