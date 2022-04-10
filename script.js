@@ -1,38 +1,13 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
-import { collection, doc, setDoc, getDoc, firestore } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCjTjR9PWc1Zf0nj4TrP-1MJT932cT_9Eo",
-  authDomain: "joke-db-c60d8.firebaseapp.com",
-  projectId: "joke-db-c60d8",
-  storageBucket: "joke-db-c60d8.appspot.com",
-  messagingSenderId: "175403930516",
-  appId: "1:175403930516:web:59f674989c1901b5997581",
-  measurementId: "G-6BG3SNRVQG",
-};
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-const db = firestore();
-const myRef = collection(db, "jokes", "QonsxVvAxDzCrgl2pTJw");
-const docSnap = await getDoc(myRef);
-
-if (docSnap.exists()) {
-  console.log("Document data:", docSnap.data());
-} else {
-  // doc.data() will be undefined in this case
-  console.log("No such document!");
-}
-
 /* click-listeners for containers */
 const addJokeBtn = document.getElementById("add-joke-btn");
+const backBtn = document.getElementById("back-btn");
+const generateJokeBtn = document.getElementById("new-joke-btn")
+const addMyJokeBtn = document.getElementById("create-joke-btn")
+
+const joke = document.getElementById("joke");
+
 const jokeContainer = document.getElementById("joke-container");
 const addJokeContainer = document.getElementById("add-joke-container");
-
-const backBtn = document.getElementById("back-btn");
 
 addJokeBtn.addEventListener("click", function() {
   jokeContainer.style.display = "none";
@@ -43,3 +18,23 @@ backBtn.addEventListener("click", function() {
   jokeContainer.style.display = "block";
   addJokeContainer.style.display = "none";
 });
+
+generateJokeBtn.addEventListener("click", function() {
+  var randNum = Math.floor(Math.random() * jokeArray.length);
+  joke.innerHTML = jokeArray[randNum];
+});
+
+addMyJokeBtn.addEventListener("click", function() {
+  const input = document.getElementById("input").value;
+  jokeArray.push(input);
+  window.alert("Your jokes has been added!");
+});
+
+const jokeArray = [
+"Why can't a leopard hide? He's always spotted.",
+"Why did the football coach go to the bank? To get his quarter back.",
+"Air used to be free at the gas station, now it costs 2.50. You want to know why? Inflation.",
+"I tried to get a smart car the other day but they sold out too fast. Why? I guess I'm just a bit slow.",
+"I told my wife that a husband is like a fine wine: we just get better with age. The next day she locked me in the cellar.",
+"Did you hear about the claustrophobic astronaut? He just wanted a bit more space."
+];
